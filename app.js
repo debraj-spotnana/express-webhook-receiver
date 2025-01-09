@@ -11,6 +11,7 @@ var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.raw({
   inflate: true,
+  limit: '1mb',
   type: "*/*",
 }));
 
@@ -33,6 +34,7 @@ app.post('/auth', function(req, res, next) {
 });
 
 app.post('/deliver', function(req, res, next) {
+  
   printReq(req);
   res.json({"status":"ok"});
 });
